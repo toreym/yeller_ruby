@@ -66,7 +66,7 @@ module Yeller
       def yeller_user_data
         return {} unless respond_to?(:current_user)
         return {} unless current_user.respond_to?(:id)
-        id = current_user.id
+        id = current_user.id unless current_user.nil?
         return {} unless id.is_a?(Integer)
         user = {"id" => id}
         user.merge!(_yeller_extract_user_attributes(user))
